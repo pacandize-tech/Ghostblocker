@@ -133,7 +133,21 @@ public class GhostblockerClientGameTest implements FabricClientGameTest {
 			context.runOnClient(mc -> {
 				int core = RoomScanner.coreForTesting(7, 7);
 				RoomScanner.registerForTesting(new RoomData("Beams-2", RoomData.Type.NORMAL, List.of(core), 0, 3, 0, "1x1"));
-				SkyblockLocation.forceDungeonForTesting = true;
+				check(!SkyblockLocation.inDungeon(), "should not think we're in the Catacombs yet");
+			});
+			// A Hypixel-style sidebar: the line's text lives in the team prefix/suffix, split around a filler emoji
+			// that is the score holder's name.
+			server.runCommand("scoreboard objectives add sb dummy \"SKYBLOCK\"");
+			server.runCommand("scoreboard objectives setdisplay sidebar sb");
+			server.runCommand("team add line5");
+			server.runCommand("team modify line5 prefix \" ⏣ The Catac\"");
+			server.runCommand("team modify line5 suffix \"ombs (E)\"");
+			server.runCommand("team join line5 §7🎂");
+			server.runCommand("scoreboard players set §7🎂 sb 5");
+			context.waitTicks(20);
+			context.runOnClient(mc -> {
+				LOGGER.info("Sidebar lines: {}", SkyblockLocation.sidebarLines());
+				check(SkyblockLocation.inDungeon(), "Hypixel-style sidebar should be read as the Catacombs");
 			});
 			context.waitTicks(20);
 			context.runOnClient(mc -> {
@@ -158,7 +172,6 @@ public class GhostblockerClientGameTest implements FabricClientGameTest {
 				check(RouteTracker.stepIndex() == 1, "opening the chest should advance to step 2, at " + RouteTracker.stepIndex());
 				LOGGER.info("Chest click advanced the route to step {}/{}", RouteTracker.stepIndex() + 1, RouteTracker.steps().size());
 				mc.gui.setScreen(null);
-				SkyblockLocation.forceDungeonForTesting = false;
 			});
 			context.waitTicks(5);
 			LOGGER.info("GHOSTBLOCKER TEST PASSED");
