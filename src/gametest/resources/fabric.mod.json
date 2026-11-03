@@ -1,0 +1,15 @@
+{
+	"schemaVersion": 1,
+	"id": "ghostblocker-test",
+	"version": "1.0.0",
+	"name": "Ghostblocker Tests",
+	"environment": "client",
+	"entrypoints": {
+		"fabric-client-gametest": [
+			"com.ghostblocker.test.GhostblockerClientGameTest"
+		]
+	},
+	"depends": {
+		"ghostblocker": "*"
+	}
+}

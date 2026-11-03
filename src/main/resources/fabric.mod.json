@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "ghostblocker",
+	"version": "${version}",
+	"name": "Ghostblocker",
+	"description": "Hypixel SkyBlock quality-of-life: choose what you take from your stash, lock slots, lock your hotbar or camera, and dungeon helpers.",
+	"contributors": [
+		"Dungeon room detection & room data: odtheking (Odin, BSD-3-Clause)",
+		"Secret routes: yourboykyle, wyannnnn (R-aMcC), zzyyrraa, Itplays, 3ppopka (Secret Routes Mod, GPL-3.0)",
+		"Secret locations: Quantizr (Dungeon Rooms Mod, GPL-3.0)"
+	],
+	"authors": [
+		"isaac"
+	],
+	"license": "GPL-3.0-or-later",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.ghostblocker.Ghostblocker"
+		]
+	},
+	"mixins": [
+		"ghostblocker.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

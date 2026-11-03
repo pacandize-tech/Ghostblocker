@@ -1,0 +1,10 @@
+{
+	"key.category.ghostblocker.main": "Ghostblocker",
+	"key.ghostblocker.config": "Open Ghostblocker settings",
+	"key.ghostblocker.lock_slot": "Lock / unlock hovered slot",
+	"key.ghostblocker.hotbar_lock": "Toggle hotbar slot lock",
+	"key.ghostblocker.camera_lock": "Toggle camera (mouse) lock",
+	"key.ghostblocker.next_step": "Secret route: next step",
+	"key.ghostblocker.previous_step": "Secret route: previous step",
+	"key.ghostblocker.cycle_route": "Secret route: switch route variant"
+}
